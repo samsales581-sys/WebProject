@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -17,7 +17,7 @@
   <!-- CONTRAST OVERLAY -->
   <div id="contrast-overlay" aria-hidden="true"></div>
 
-  <a class="skip-link" href="#main"> </a>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <nav role="navigation" aria-label="Main navigation">
     <div class="nav-logo" aria-label="Tech for People">Tech<span class="accent">4</span>People</div>
@@ -110,47 +110,58 @@
     <!-- PILLARS -->
     <section class="pillars" id="pillars" aria-labelledby="pillars-heading">
       <div class="pillars-header reveal">
-        <div class="section-label">How It Works</div>
+        
         <h2 id="pillars-heading">Three Pillars of<br/>Digital Justice</h2>
         <p>Built on the belief that everyone deserves equal access to information, no matter their background or ability.</p>
       </div>
-      <div class="pillars-grid">
-        <article class="card teal-accent reveal" aria-labelledby="pillar1-title">
-          <div class="card-num" aria-hidden="true">1</div>
-          <div class="card-icon teal" aria-hidden="true">🏛️</div>
-          <h3 id="pillar1-title">The Hub</h3>
-          <p>Everything in one place. No more getting lost in a maze of government websites.</p>
-          <ul class="card-features" role="list">
-            <li>Simple search bar for any rights topic</li>
-            <li>Big, clear category buttons</li>
-            <li>Direct links to the right section</li>
-            <li>No dead links or confusing menus</li>
-          </ul>
+      <div class="photo-cards-grid">
+
+        <!-- BOX 1: Replace child_labor.jpg with your image file -->
+        <article class="photo-card reveal" aria-labelledby="theme1-title">
+          <img
+            src="child_labor.jpg"
+            alt="End Child Labor"
+            class="photo-card-img-tag"
+          />
+          <div class="photo-card-overlay"></div>
+          <div class="photo-card-body">
+            <div class="photo-card-theme">THEME I</div>
+            <h3 id="theme1-title" class="photo-card-title">End Child Labor</h3>
+            <a href="#rights" class="photo-card-link">&#8595; LEARN MORE</a>
+          </div>
         </article>
-        <article class="card gold-accent reveal" aria-labelledby="pillar2-title">
-          <div class="card-num" aria-hidden="true">2</div>
-          <div class="card-icon gold" aria-hidden="true">📖</div>
-          <h3 id="pillar2-title">Plain Language</h3>
-          <p>Every law comes with a "translator" — written in words anyone can understand.</p>
-          <ul class="card-features" role="list">
-            <li>Short bullet points, no lawyer talk</li>
-            <li>"In simple terms:" explanations</li>
-            <li>Real examples for every law</li>
-            <li>Grade 6 reading level target</li>
-          </ul>
+
+        <!-- BOX 2: Replace right_strike.jpg with your image file -->
+        <article class="photo-card reveal" aria-labelledby="theme2-title">
+          <img
+            src="right_strike.jpg"
+            alt="Fair Wages for All"
+            class="photo-card-img-tag"
+          />
+          <div class="photo-card-overlay"></div>
+          <div class="photo-card-body">
+            <div class="photo-card-theme">THEME II</div>
+            <h3 id="theme2-title" class="photo-card-title">Fair Wages for All</h3>
+            <p class="photo-card-desc">A day's honest labor must be met with a dignified wage. Workers are people, not commodities.</p>
+            <a href="#rights" class="photo-card-link">&#8595; LEARN MORE</a>
+          </div>
         </article>
-        <article class="card lav-accent reveal" aria-labelledby="pillar3-title">
-          <div class="card-num" aria-hidden="true">3</div>
-          <div class="card-icon lavender" aria-hidden="true">♿</div>
-          <h3 id="pillar3-title">Accessibility</h3>
-          <p>Designed for people with disabilities and those on slow internet connections.</p>
-          <ul class="card-features" role="list">
-            <li>Contrast slider from 0–100%</li>
-            <li>5-level text size (XS → XL)</li>
-            <li>Screen reader compatible</li>
-            <li>Keyboard-navigable interface</li>
-          </ul>
+
+        <!-- BOX 3: Replace workers_right.jpg with your image file -->
+        <article class="photo-card reveal" aria-labelledby="theme3-title">
+          <img
+            src="workers_right.jpg"
+            alt="Workers' Rights"
+            class="photo-card-img-tag"
+          />
+          <div class="photo-card-overlay"></div>
+          <div class="photo-card-body">
+            <div class="photo-card-theme">THEME III</div>
+            <h3 id="theme3-title" class="photo-card-title">Workers' Rights</h3>
+            <a href="#rights" class="photo-card-link">&#8595; LEARN MORE</a>
+          </div>
         </article>
+
       </div>
     </section>
 
