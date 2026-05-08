@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tech for People — Making digital rights accessible to everyone through plain language, open resources, and inclusive design." />
+  <title>Tech for People | Digital Rights for All</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- CONTRAST OVERLAY -->
+  <div id="contrast-overlay" aria-hidden="true"></div>
+
+  <a class="skip-link" href="#main"> </a>
+
+  <nav role="navigation" aria-label="Main navigation">
+    <div class="nav-logo" aria-label="Tech for People">Tech<span class="accent">4</span>People</div>
+    <ul class="nav-links" role="list">
+      <li><a href="#hub">The Hub</a></li>
+      <li><a href="#pillars">Our Pillars</a></li>
+      <li><a href="#rights">Know Your Rights</a></li>
+      <li><a href="#accessibility">Accessibility</a></li>
+    </ul>
+
+    <div class="a11y-toolbar" role="group" aria-label="Accessibility controls">
+
+      <!-- CONTRAST SLIDER -->
+      <div class="a11y-control-group" style="position:relative;" title="Adjust contrast overlay (0–100%)">
+        <label for="contrast-slider">⊙ Contrast</label>
+        <input
+          type="range"
+          id="contrast-slider"
+          class="a11y-slider"
+          min="0" max="100" step="1" value="0"
+          aria-label="Contrast level from 0 to 100 percent"
+          aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+        />
+        <span class="ctrl-val" id="contrast-val" aria-live="polite">0%</span>
+      </div>
+
+      <!-- TEXT SIZE BUTTONS -->
+      <div class="text-size-group" role="group" aria-label="Text size selector">
+        <span class="ts-label">🔡 Size</span>
+        <button class="ts-btn" data-ts="xs" data-px="13" aria-pressed="false" title="Extra small text (13px)">XS</button>
+        <button class="ts-btn" data-ts="s"  data-px="14" aria-pressed="false" title="Small text (14px)">S</button>
+        <button class="ts-btn active" data-ts="m" data-px="16" aria-pressed="true"  title="Medium text — default (16px)">M</button>
+        <button class="ts-btn" data-ts="l"  data-px="19" aria-pressed="false" title="Large text (19px)">L</button>
+        <button class="ts-btn" data-ts="xl" data-px="22" aria-pressed="false" title="Extra large text (22px)">XL</button>
+      </div>
+
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <div class="hero-badge" role="note"><span>🌐</span> IT Student Advocacy Project</div>
+        <h1 id="hero-heading">
+          <span class="underline-gold">Information</span> is a<br/>
+          <em>right</em>, not a privilege.
+        </h1>
+        <p class="hero-sub">
+          We translate complicated laws into plain language, put every resource in one place, and build tools that work for everyone — including people with disabilities and slow internet.
+        </p>
+        <div class="hero-cta">
+          <a href="#hub" class="btn btn-primary">🔍 Find Your Rights</a>
+          <a href="#pillars" class="btn btn-outline">Learn How It Works</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HUB -->
+    <section class="hub" id="hub" aria-labelledby="hub-heading">
+      <div class="section-label">Pillar 1</div>
+      <h2 id="hub-heading">The Digital Hub</h2>
+      <p class="hub-sub">Everything in one place. Search any topic and jump directly to the right information.</p>
+
+      <div class="search-bar" role="search">
+        <label for="search-input" class="sr-only">Search for rights, laws, or help topics</label>
+        <input type="text" id="search-input" placeholder="Search: privacy, labor, health, housing, voter rights…" aria-label="Search rights and resources" autocomplete="off" />
+        <button id="search-btn" aria-label="Search">Search →</button>
+      </div>
+
+      <div class="quick-links" role="group" aria-label="Quick topic links">
+        <button class="quick-chip" data-topic="labor">⚒️ Labor Rights</button>
+        <button class="quick-chip" data-topic="privacy">🔒 Privacy</button>
+        <button class="quick-chip" data-topic="consumer">🛒 Consumer</button>
+        <button class="quick-chip" data-topic="education">🎓 Education</button>
+        <button class="quick-chip" data-topic="digital">💻 Digital</button>
+        <button class="quick-chip" data-topic="disability">♿ Disability</button>
+        <button class="quick-chip" data-topic="health">🏥 Health</button>
+        <button class="quick-chip" data-topic="housing">🏠 Housing</button>
+        <button class="quick-chip" data-topic="family">👨‍👩‍👧 Family</button>
+        <button class="quick-chip" data-topic="gender">⚧ Gender</button>
+        <button class="quick-chip" data-topic="environment">🌿 Environment</button>
+        <button class="quick-chip" data-topic="voter">🗳️ Voter</button>
+      </div>
+
+      <div id="search-results" role="region" aria-live="polite" aria-label="Search results"></div>
+    </section>
+
+    <!-- PILLARS -->
+    <section class="pillars" id="pillars" aria-labelledby="pillars-heading">
+      <div class="pillars-header reveal">
+        <div class="section-label">How It Works</div>
+        <h2 id="pillars-heading">Three Pillars of<br/>Digital Justice</h2>
+        <p>Built on the belief that everyone deserves equal access to information, no matter their background or ability.</p>
+      </div>
+      <div class="pillars-grid">
+        <article class="card teal-accent reveal" aria-labelledby="pillar1-title">
+          <div class="card-num" aria-hidden="true">1</div>
+          <div class="card-icon teal" aria-hidden="true">🏛️</div>
+          <h3 id="pillar1-title">The Hub</h3>
+          <p>Everything in one place. No more getting lost in a maze of government websites.</p>
+          <ul class="card-features" role="list">
+            <li>Simple search bar for any rights topic</li>
+            <li>Big, clear category buttons</li>
+            <li>Direct links to the right section</li>
+            <li>No dead links or confusing menus</li>
+          </ul>
+        </article>
+        <article class="card gold-accent reveal" aria-labelledby="pillar2-title">
+          <div class="card-num" aria-hidden="true">2</div>
+          <div class="card-icon gold" aria-hidden="true">📖</div>
+          <h3 id="pillar2-title">Plain Language</h3>
+          <p>Every law comes with a "translator" — written in words anyone can understand.</p>
+          <ul class="card-features" role="list">
+            <li>Short bullet points, no lawyer talk</li>
+            <li>"In simple terms:" explanations</li>
+            <li>Real examples for every law</li>
+            <li>Grade 6 reading level target</li>
+          </ul>
+        </article>
+        <article class="card lav-accent reveal" aria-labelledby="pillar3-title">
+          <div class="card-num" aria-hidden="true">3</div>
+          <div class="card-icon lavender" aria-hidden="true">♿</div>
+          <h3 id="pillar3-title">Accessibility</h3>
+          <p>Designed for people with disabilities and those on slow internet connections.</p>
+          <ul class="card-features" role="list">
+            <li>Contrast slider from 0–100%</li>
+            <li>5-level text size (XS → XL)</li>
+            <li>Screen reader compatible</li>
+            <li>Keyboard-navigable interface</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats" aria-label="Impact statistics">
+      <div class="stats-inner">
+        <div class="stat reveal"><div class="stat-num">73%</div><div class="stat-label">of Filipinos use mobile internet</div></div>
+        <div class="stat reveal"><div class="stat-num">1 in 8</div><div class="stat-label">people has a disability worldwide</div></div>
+        <div class="stat reveal"><div class="stat-num">60%</div><div class="stat-label">of workers don't know their full labor rights</div></div>
+        <div class="stat reveal"><div class="stat-num">∞</div><div class="stat-label">people we want to reach — for free</div></div>
+      </div>
+    </section>
+
+    <!-- RIGHTS -->
+    <section class="rights" id="rights" aria-labelledby="rights-heading">
+      <div class="section-label">Pillar 2 — Plain Language</div>
+      <h2 id="rights-heading">Know Your Rights</h2>
+      <p class="sub">Filter by category or tap any card to read the law in simple words.</p>
+
+      <div class="rights-tabs" role="group" aria-label="Filter rights by category">
+        <button class="rights-tab active" data-filter="all">🌐 All Rights</button>
+        <button class="rights-tab" data-filter="labor">⚒️ Labor</button>
+        <button class="rights-tab" data-filter="privacy">🔒 Privacy</button>
+        <button class="rights-tab" data-filter="consumer">🛒 Consumer</button>
+        <button class="rights-tab" data-filter="education">🎓 Education</button>
+        <button class="rights-tab" data-filter="digital">💻 Digital</button>
+        <button class="rights-tab" data-filter="disability">♿ Disability</button>
+        <button class="rights-tab" data-filter="health">🏥 Health</button>
+        <button class="rights-tab" data-filter="housing">🏠 Housing</button>
+        <button class="rights-tab" data-filter="family">👨‍👩‍👧 Family</button>
+        <button class="rights-tab" data-filter="gender">⚧ Gender</button>
+        <button class="rights-tab" data-filter="environment">🌿 Environment</button>
+        <button class="rights-tab" data-filter="voter">🗳️ Voter</button>
+      </div>
+
+      <div class="rights-grid" id="rights-grid" role="list">
+
+        <!-- LABOR -->
+        <div class="right-card color-teal reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="labor" id="card-labor-1">
+          <span class="right-card-icon" aria-hidden="true">⚒️</span>
+          <div class="right-card-header">
+            <div><h4>Labor Rights</h4><div class="right-law">Republic Act 6727 · Labor Code of the Philippines</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>Your employer must follow minimum wage laws and cannot make you work without proper pay.</p>
+            <ul>
+              <li>You have the right to a minimum wage set by region</li>
+              <li>Overtime work (beyond 8 hrs) must be paid at 125% of your rate</li>
+              <li>Night shift differential (10pm–6am) adds 10% extra pay</li>
+              <li>You can join or form a labor union</li>
+              <li>Illegal dismissal can be contested before NLRC</li>
+              <li>You are entitled to 13th month pay every December</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-card color-teal reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="labor" id="card-labor-2">
+          <span class="right-card-icon" aria-hidden="true">📋</span>
+          <div class="right-card-header">
+            <div><h4>Safe Working Conditions</h4><div class="right-law">Occupational Safety and Health Standards (DOLE DO 198-18)</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>Your workplace must be safe. Employers cannot put your life at risk to save money.</p>
+            <ul>
+              <li>Employers must provide free safety equipment (helmets, gloves, masks)</li>
+              <li>You can refuse to work if conditions are dangerous without fear of termination</li>
+              <li>DOLE can conduct surprise inspections on unsafe workplaces</li>
+              <li>Employers must have a safety officer and first-aid kit on site</li>
+              <li>Work-related injuries must be compensated through ECC/SSS</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PRIVACY -->
+        <div class="right-card color-sky reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="privacy" id="card-privacy-1">
+          <span class="right-card-icon" aria-hidden="true">🔒</span>
+          <div class="right-card-header">
+            <div><h4>Data Privacy Rights</h4><div class="right-law">Republic Act 10173 · Data Privacy Act 2012</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>Companies must ask your permission before collecting your personal information online.</p>
+            <ul>
+              <li>You can ask any company what data they have about you</li>
+              <li>You can request deletion of your personal data</li>
+              <li>They must tell you within 72 hours if your data was leaked</li>
+              <li>You can file a complaint with the National Privacy Commission (NPC)</li>
+              <li>Companies cannot sell your data to third parties without consent</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-card color-sky reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="privacy" id="card-privacy-2">
+          <span class="right-card-icon" aria-hidden="true">📱</span>
+          <div class="right-card-header">
+            <div><h4>Phone &amp; Communication Privacy</h4><div class="right-law">RA 4200 · Anti-Wiretapping Law</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>No one can record or listen to your private conversations without your permission.</p>
+            <ul>
+              <li>Secret recording of calls or conversations is illegal</li>
+              <li>Employers cannot spy on your personal phone messages</li>
+              <li>Even government agents need a court order to wiretap</li>
+              <li>Evidence from illegal wiretapping cannot be used in court</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- CONSUMER -->
+        <div class="right-card color-gold reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="consumer" id="card-consumer-1">
+          <span class="right-card-icon" aria-hidden="true">🛒</span>
+          <div class="right-card-header">
+            <div><h4>Consumer Rights</h4><div class="right-law">Republic Act 7394 · Consumer Act</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>You are safe from being cheated when buying products or services.</p>
+            <ul>
+              <li>Products must be safe to use — defective ones must be replaced or refunded</li>
+              <li>Sellers must show correct and honest prices</li>
+              <li>False or misleading advertisements are illegal</li>
+              <li>You can file complaints with the DTI</li>
+              <li>Online sellers have the same obligations as physical stores</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-card color-gold reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="consumer" id="card-consumer-2">
+          <span class="right-card-icon" aria-hidden="true">💳</span>
+          <div class="right-card-header">
+            <div><h4>Online Shopping &amp; E-Commerce Rights</h4><div class="right-law">DTI MC 20-01 · E-Commerce Rules</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>When you buy online, the seller still has legal responsibilities to you.</p>
+            <ul>
+              <li>You have the right to accurate product photos and descriptions</li>
+              <li>Sellers must clearly state delivery timeframes and fees</li>
+              <li>You can cancel orders before shipment</li>
+              <li>You must receive a receipt or proof of purchase</li>
+              <li>Report scam sellers to DTI or your payment provider</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="right-card color-lavender reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="education" id="card-education-1">
+          <span class="right-card-icon" aria-hidden="true">🎓</span>
+          <div class="right-card-header">
+            <div><h4>Education Rights</h4><div class="right-law">Republic Act 9155 · Governance of Basic Education</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>Every child in the Philippines has the right to free basic education.</p>
+            <ul>
+              <li>Free public schooling from Kindergarten to Grade 12</li>
+              <li>Schools cannot collect illegal fees (DepEd Order 88-2010)</li>
+              <li>Students have the right to organize and be heard</li>
+              <li>No discrimination based on gender, religion, or disability</li>
+              <li>Bullying in school is prohibited under RA 10627</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-card color-lavender reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="education" id="card-education-2">
+          <span class="right-card-icon" aria-hidden="true">🏫</span>
+          <div class="right-card-header">
+            <div><h4>Free Higher Education Rights</h4><div class="right-law">Republic Act 10931 · Universal Access to Quality Tertiary Education Act</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>Qualified students can attend State Universities and Colleges (SUCs) for free.</p>
+            <ul>
+              <li>No tuition and other school fees in public universities (CHED-supervised)</li>
+              <li>Covers college and technical/vocational education</li>
+              <li>Private school students may qualify for TDP (Tertiary Education Subsidy)</li>
+              <li>Apply through your school's scholarship or financial aid office</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- DIGITAL -->
+        <div class="right-card color-rust reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="digital" id="card-digital-1">
+          <span class="right-card-icon" aria-hidden="true">🛡️</span>
+          <div class="right-card-header">
+            <div><h4>Cybercrime Protection</h4><div class="right-law">Republic Act 10175 · Cybercrime Prevention Act</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>The law protects you from being harassed, scammed, or threatened online.</p>
+            <ul>
+              <li>Online harassment and cyberbullying are criminal offenses</li>
+              <li>Identity theft online is punishable by up to 12 years in prison</li>
+              <li>You can report cybercrimes to the NBI Cybercrime Division or PNP-ACG</li>
+              <li>Unauthorized access (hacking) to your accounts is illegal</li>
+              <li>Online scams and phishing are prosecutable crimes</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-card color-rust reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="digital" id="card-digital-2">
+          <span class="right-card-icon" aria-hidden="true">📸</span>
+          <div class="right-card-header">
+            <div><h4>Photo &amp; Image Privacy Online</h4><div class="right-law">RA 9995 · Anti-Photo and Video Voyeurism Act</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>No one can take, share, or spread your private photos or videos without your consent.</p>
+            <ul>
+              <li>Sharing intimate images without consent is a crime ("revenge porn")</li>
+              <li>Penalty: 3–7 years imprisonment and up to ₱500,000 fine</li>
+              <li>Even if you originally shared the photo yourself, spreading it further is illegal</li>
+              <li>Report to NBI or PNP and request platform removal (Facebook, etc.)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- DISABILITY -->
+        <div class="right-card color-rose reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="disability" id="card-disability-1">
+          <span class="right-card-icon" aria-hidden="true">♿</span>
+          <div class="right-card-header">
+            <div><h4>Disability Rights</h4><div class="right-law">Republic Act 7277 · Magna Carta for Disabled Persons</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>People with disabilities are protected from discrimination in all areas of life.</p>
+            <ul>
+              <li>20% discount on medicines, transport, restaurants, hotels</li>
+              <li>Equal job opportunities required — companies with 50+ staff must hire at least 1% PWDs</li>
+              <li>Public buildings must be PWD accessible (ramps, elevators)</li>
+              <li>Schools must accommodate and not discriminate against PWD students</li>
+              <li>Additional tax exemptions for PWDs and their caregivers</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-card color-rose reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="disability" id="card-disability-2">
+          <span class="right-card-icon" aria-hidden="true">🏥</span>
+          <div class="right-card-header">
+            <div><h4>Senior Citizen &amp; PWD Benefits</h4><div class="right-law">RA 9994 · Expanded Senior Citizens Act</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>Senior citizens (60+) and PWDs enjoy special discounts and priority services by law.</p>
+            <ul>
+              <li>20% discount + VAT exemption on medicines, food, and utilities</li>
+              <li>Priority lanes in banks, hospitals, and government offices</li>
+              <li>Free flu and pneumonia vaccines in public health centers</li>
+              <li>Monthly social pension for indigent seniors (DSWD)</li>
+              <li>Philhealth automatically covers senior citizens</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- HEALTH -->
+        <div class="right-card color-forest reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="health" id="card-health-1">
+          <span class="right-card-icon" aria-hidden="true">🏥</span>
+          <div class="right-card-header">
+            <div><h4>Universal Health Care Rights</h4><div class="right-law">Republic Act 11223 · Universal Health Care Act</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>Every Filipino is automatically covered by PhilHealth for basic health services.</p>
+            <ul>
+              <li>All Filipinos are automatically PhilHealth members — no need to register</li>
+              <li>Free outpatient consultations at public health centers</li>
+              <li>Free medicines for common illnesses in barangay health centers</li>
+              <li>No balance billing in government hospitals for indigent patients</li>
+              <li>Mental health services are covered under PhilHealth (RA 11036)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-card color-forest reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="health" id="card-health-2">
+          <span class="right-card-icon" aria-hidden="true">🧠</span>
+          <div class="right-card-header">
+            <div><h4>Mental Health Rights</h4><div class="right-law">Republic Act 11036 · Mental Health Act</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>Your mental health matters and the law protects your right to care and dignity.</p>
+            <ul>
+              <li>You have the right to mental health services in public hospitals</li>
+              <li>Employers must not discriminate against employees with mental health conditions</li>
+              <li>Schools must have mental health programs and counselors</li>
+              <li>You cannot be involuntarily hospitalized without due process</li>
+              <li>Confidentiality of mental health records is protected by law</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-card color-forest reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="health" id="card-health-3">
+          <span class="right-card-icon" aria-hidden="true">🤱</span>
+          <div class="right-card-header">
+            <div><h4>Maternal Health &amp; Breastfeeding Rights</h4><div class="right-law">RA 10028 · Expanded Breastfeeding Promotion Act</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>Mothers have legal protections for pregnancy, childbirth, and breastfeeding at work.</p>
+            <ul>
+              <li>105-day maternity leave for working mothers (RA 11210)</li>
+              <li>Solo mothers get an extra 15 days of maternity leave</li>
+              <li>Employers must provide a lactation station (breastfeeding room)</li>
+              <li>Breastfeeding breaks during work hours are your legal right</li>
+              <li>Free prenatal care in public health centers</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- HOUSING -->
+        <div class="right-card color-amber reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="housing" id="card-housing-1">
+          <span class="right-card-icon" aria-hidden="true">🏠</span>
+          <div class="right-card-header">
+            <div><h4>Housing Rights &amp; Urban Poor</h4><div class="right-law">Republic Act 7279 · Urban Development and Housing Act</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>You cannot be forcibly removed from your home without proper legal process.</p>
+            <ul>
+              <li>Demolition without prior notice and relocation assistance is illegal</li>
+              <li>Eviction must follow legal court process — not just a landlord's order</li>
+              <li>You are entitled to 30 days advance notice before eviction</li>
+              <li>Informal settlers must be offered relocation sites before demolition</li>
+              <li>You can file complaints with HLURB (now DHSUD) for housing violations</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-card color-amber reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="housing" id="card-housing-2">
+          <span class="right-card-icon" aria-hidden="true">🏢</span>
+          <div class="right-card-header">
+            <div><h4>Tenant Rights</h4><div class="right-law">Republic Act 9653 · Rent Control Act</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>If you are renting a home, the landlord cannot just do whatever they want.</p>
+            <ul>
+              <li>Landlords cannot raise rent more than 7% per year for units below ₱10,000/month</li>
+              <li>You cannot be evicted without a court order</li>
+              <li>Landlords must return your security deposit within 30 days of moving out</li>
+              <li>They must not cut off water and electricity to force you to leave</li>
+              <li>File complaints at HLURB or the barangay</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- FAMILY -->
+        <div class="right-card color-brown reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="family" id="card-family-1">
+          <span class="right-card-icon" aria-hidden="true">👨‍👩‍👧</span>
+          <div class="right-card-header">
+            <div><h4>Children's Rights</h4><div class="right-law">Republic Act 7610 · Special Protection of Children</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>Every child has the right to be safe, loved, educated, and protected from harm.</p>
+            <ul>
+              <li>Child abuse, neglect, and exploitation are serious crimes</li>
+              <li>Child labor below 15 years old is illegal (with very limited exceptions)</li>
+              <li>Children in conflict with the law are treated separately under RA 9344 (JJWA)</li>
+              <li>Online child sexual abuse material (CSAM) is criminal under RA 9775</li>
+              <li>Report abuse to the DSWD, barangay, or police (WCPD unit)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-card color-brown reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="family" id="card-family-2">
+          <span class="right-card-icon" aria-hidden="true">🚨</span>
+          <div class="right-card-header">
+            <div><h4>Protection from Domestic Violence</h4><div class="right-law">Republic Act 9262 · Anti-VAWC Act</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>Violence inside the home — physical, emotional, or financial — is a crime.</p>
+            <ul>
+              <li>Covers violence against women and children by partners or family members</li>
+              <li>Includes physical, sexual, psychological, and economic abuse</li>
+              <li>You can apply for a Barangay Protection Order (BPO) immediately — for free</li>
+              <li>Violators can be arrested and jailed</li>
+              <li>Call the hotline: DSWD 8888 or Women's Crisis Center</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- GENDER -->
+        <div class="right-card color-pink reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="gender" id="card-gender-1">
+          <span class="right-card-icon" aria-hidden="true">⚧</span>
+          <div class="right-card-header">
+            <div><h4>Anti-Discrimination &amp; Gender Equality</h4><div class="right-law">Republic Act 9710 · Magna Carta of Women</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>Women have equal rights to men in all aspects of society — by law.</p>
+            <ul>
+              <li>No discrimination in hiring, salary, promotion, or benefits based on gender</li>
+              <li>Women have equal property rights in marriage</li>
+              <li>Free legal assistance for women in gender-based violence cases</li>
+              <li>30% of government positions should be held by women</li>
+              <li>Comprehensive health services for women are mandated by law</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-card color-pink reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="gender" id="card-gender-2">
+          <span class="right-card-icon" aria-hidden="true">🚫</span>
+          <div class="right-card-header">
+            <div><h4>Anti-Sexual Harassment Rights</h4><div class="right-law">RA 7877 · Anti-Sexual Harassment Act · RA 11313 · Safe Spaces Act</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>Sexual harassment anywhere — school, work, street, or online — is illegal.</p>
+            <ul>
+              <li>Catcalling, wolf-whistling, and sexist remarks in public are punishable</li>
+              <li>Employers must create a sexual harassment committee</li>
+              <li>Online sexual harassment (sending unwanted explicit content) is a crime</li>
+              <li>Schools must have a designated officer handling harassment complaints</li>
+              <li>Penalties range from fines to imprisonment depending on severity</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ENVIRONMENT -->
+        <div class="right-card color-forest reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="environment" id="card-env-1">
+          <span class="right-card-icon" aria-hidden="true">🌿</span>
+          <div class="right-card-header">
+            <div><h4>Right to a Clean Environment</h4><div class="right-law">RA 9275 · Clean Water Act · RA 8749 · Clean Air Act</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>You have the right to clean air, safe water, and a healthy environment.</p>
+            <ul>
+              <li>Industries cannot dump waste in rivers, lakes, or oceans</li>
+              <li>Burning of garbage in residential areas is prohibited</li>
+              <li>You can report pollution to DENR or local government</li>
+              <li>Communities near mining or industrial sites have the right to information about risks</li>
+              <li>Cutting protected trees without a permit is illegal (RA 9175)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-card color-forest reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="environment" id="card-env-2">
+          <span class="right-card-icon" aria-hidden="true">♻️</span>
+          <div class="right-card-header">
+            <div><h4>Solid Waste &amp; Plastic Pollution Rights</h4><div class="right-law">Republic Act 9003 · Ecological Solid Waste Management Act</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>The government must manage garbage properly. You also have responsibilities.</p>
+            <ul>
+              <li>LGUs must provide segregated waste collection (biodegradable, recyclable, residual)</li>
+              <li>Open dumpsites are prohibited — sanitary landfills are required</li>
+              <li>Littering in public is punishable by fines</li>
+              <li>Single-use plastic bags are regulated under many local ordinances</li>
+              <li>You can report illegal dumping to your barangay or LGU</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- VOTER -->
+        <div class="right-card color-navy reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="voter" id="card-voter-1">
+          <span class="right-card-icon" aria-hidden="true">🗳️</span>
+          <div class="right-card-header">
+            <div><h4>Voter Rights</h4><div class="right-law">Batas Pambansa 881 · Omnibus Election Code · RA 8189 · Voter's Registration Act</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>Every Filipino citizen 18 and above has the right to vote and be counted.</p>
+            <ul>
+              <li>You must register with COMELEC to vote (registration is free)</li>
+              <li>Your vote is secret — no one can force you to reveal who you voted for</li>
+              <li>Vote buying and selling are crimes — both giver and taker can be jailed</li>
+              <li>Voter intimidation and harassment are election offenses</li>
+              <li>Overseas Filipinos can vote through the OAV Law (RA 9189)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-card color-navy reveal" role="listitem" tabindex="0" aria-expanded="false" data-category="voter" id="card-voter-2">
+          <span class="right-card-icon" aria-hidden="true">📢</span>
+          <div class="right-card-header">
+            <div><h4>Freedom of Speech &amp; Expression</h4><div class="right-law">1987 Philippine Constitution · Article III, Section 4</div></div>
+            <div class="arrow" aria-hidden="true">▶</div>
+          </div>
+          <div class="right-body" hidden>
+            <div class="plain-label">In Simple Terms</div>
+            <p>You have the right to speak your mind, but with limits to protect others.</p>
+            <ul>
+              <li>The government cannot silence legitimate criticism or peaceful protest</li>
+              <li>Freedom of the press is constitutionally protected</li>
+              <li>You may freely practice your religion without government interference</li>
+              <li>Hate speech, libel, and incitement to violence are NOT protected</li>
+              <li>Peaceful assembly requires permit but cannot be unreasonably denied</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ACCESSIBILITY SECTION -->
+    <section class="a11y" id="accessibility" aria-labelledby="a11y-heading">
+      <div class="a11y-inner">
+        <div class="a11y-text reveal">
+          <div class="section-label">Pillar 3</div>
+          <h2 id="a11y-heading">Built for<br/>Everyone</h2>
+          <p>Accessibility isn't an add-on. It's the foundation. We design so that no one is left out — not someone using a screen reader, not someone on a slow 4G connection in a rural area.</p>
+          <div class="a11y-features">
+            <div class="a11y-feature">
+              <div class="a11y-icon lav" aria-hidden="true">🎨</div>
+              <div class="a11y-feature-text">
+                <h4>Contrast Slider (0–100%)</h4>
+                <p>Drag the slider in the nav bar to gradually increase contrast from normal to maximum — fine-tune it to your exact comfort level.</p>
+              </div>
+            </div>
+            <div class="a11y-feature">
+              <div class="a11y-icon sky" aria-hidden="true">🔡</div>
+              <div class="a11y-feature-text">
+                <h4>5-Level Text Size (XS → XL)</h4>
+                <p>Choose from Extra Small, Small, Medium, Large, or Extra Large — just like your phone's display settings.</p>
+              </div>
+            </div>
+            <div class="a11y-feature">
+              <div class="a11y-icon rust" aria-hidden="true">🔊</div>
+              <div class="a11y-feature-text">
+                <h4>Screen Reader Friendly</h4>
+                <p>All elements use proper ARIA labels and semantic HTML so screen readers work perfectly.</p>
+              </div>
+            </div>
+            <div class="a11y-feature">
+              <div class="a11y-icon teal" aria-hidden="true">⌨️</div>
+              <div class="a11y-feature-text">
+                <h4>Keyboard Navigable</h4>
+                <p>Every feature works with only a keyboard — no mouse required.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="a11y-demo reveal" aria-label="Accessibility demonstration panel">
+          <div class="demo-label">Contrast Check</div>
+          <div class="demo-contrast-swatches">
+            <div>
+              <div class="swatch normal">Low contrast</div>
+              <div class="swatch-note">❌ Fails WCAG AA</div>
+            </div>
+            <div>
+              <div class="swatch high">High contrast</div>
+              <div class="swatch-note">✅ Passes WCAG AAA</div>
+            </div>
+            <div>
+              <div class="swatch low">Washed out</div>
+              <div class="swatch-note">❌ Fails WCAG AA</div>
+            </div>
+            <div>
+              <div class="swatch pass">Accessible</div>
+              <div class="swatch-note">✅ Passes WCAG AA</div>
+            </div>
+          </div>
+          <div class="demo-label" style="margin-top:1.2rem;">Page Load Speed</div>
+          <div class="demo-loading-bar"><div class="demo-loading-fill" style="width:92%"></div></div>
+          <div class="demo-loading-bar"><div class="demo-loading-fill" style="width:60%"></div></div>
+          <div class="demo-loading-bar"><div class="demo-loading-fill" style="width:80%"></div></div>
+          <div class="demo-label" style="margin-top:1.2rem;">Readable at Any Size</div>
+          <div class="demo-text-size">
+            <span class="t-sm">Aa</span>
+            <span class="t-md">Aa</span>
+            <span class="t-lg">Aa</span>
+            <span class="t-xl">Aa</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANIFEST -->
+    <section class="manifest" aria-labelledby="manifest-heading">
+      <h2 id="manifest-heading">Code is care.<br/>Technology is justice.</h2>
+      <p>By building this, you aren't just completing a school project. You are proving that IT students can be agents of social change.</p>
+      <a href="#hub" class="btn btn-white">Start Exploring Your Rights →</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-logo">Tech<span>4</span>People</div>
+    <ul role="list">
+      <li><a href="#hub">The Hub</a></li>
+      <li><a href="#pillars">Pillars</a></li>
+      <li><a href="#rights">Know Your Rights</a></li>
+      <li><a href="#accessibility">Accessibility</a></li>
+    </ul>
+    <div>Made by an IT student. For everyone. 🌐</div>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
